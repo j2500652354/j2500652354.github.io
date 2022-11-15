@@ -4,6 +4,56 @@
   
     
     <entry>
+      <title>在小程序中使用svg字体图标</title>
+      <link href="/2022/11/15/%E5%9C%A8%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8svg%E5%9B%BE%E6%A0%87/"/>
+      <url>/2022/11/15/%E5%9C%A8%E5%B0%8F%E7%A8%8B%E5%BA%8F%E4%B8%AD%E4%BD%BF%E7%94%A8svg%E5%9B%BE%E6%A0%87/</url>
+      
+        <content type="html"><![CDATA[<h1 id="在小程序中使用svg字体图标"><a href="#在小程序中使用svg字体图标" class="headerlink" title="在小程序中使用svg字体图标"></a>在小程序中使用svg字体图标</h1><p>第一步：首先在阿里巴巴矢量图库<a href="https://www.iconfont.cn/search">https://www.iconfont.cn/search</a> 里面下载你想要的小图标：<br><img src="https://pic.imgdb.cn/item/637332a016f2c2beb1166b2e.png"><br><img src="https://pic.imgdb.cn/item/637332a816f2c2beb116743e.png"><br>第二步：打开 <a href="https://icomoon.io/">https://icomoon.io</a> 把你刚刚下载的svg拖拽到这里：<br><img src="https://pic.imgdb.cn/item/637332b316f2c2beb1167e42.png"><br><img src="https://pic.imgdb.cn/item/6373330216f2c2beb116ceb4.png"><br><img src="https://pic.imgdb.cn/item/637332bc16f2c2beb11686f5.png"><br>第三步：在线转换base64编码字体，打开 <a href="https://transfonter.org/">https://transfonter.org/</a> ：<br><img src="https://pic.imgdb.cn/item/637332d116f2c2beb1169d55.png"><br>下载完成后你会得到第二个文件夹，解压：<br><img src="https://pic.imgdb.cn/item/637332c216f2c2beb1168d3f.png"><br>接下来就可以使用了：<br>注意： 字体图标就相当于字体直接用font-size控制大小，color控制颜色就可以</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// wxml结构文件:&lt;view class=&quot;icon-copy&quot;&gt;&lt;/view&gt;</span><br><span class="line">// wxss样式文件：</span><br><span class="line">.icon-copy &#123;font-size: 30px;color: #000;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><p><img src="https://pic.imgdb.cn/item/637332c716f2c2beb11692aa.png"></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 小程序 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 小程序 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>uniapp实现类似keep-alive效果（从列表页进入详情页，返回列表页滚动条位置不变）</title>
+      <link href="/2022/11/15/%E5%AE%9E%E7%8E%B0%E7%B1%BB%E4%BC%BCkeep-alive%E6%95%88%E6%9E%9C%EF%BC%88%E4%BB%8E%E5%88%97%E8%A1%A8%E9%A1%B5%E8%BF%9B%E5%85%A5%E8%AF%A6%E6%83%85%E9%A1%B5%EF%BC%8C%E8%BF%94%E5%9B%9E%E5%88%97%E8%A1%A8%E9%A1%B5%E6%BB%9A%E5%8A%A8%E6%9D%A1%E4%BD%8D%E7%BD%AE%E4%B8%8D%E5%8F%98%EF%BC%89/"/>
+      <url>/2022/11/15/%E5%AE%9E%E7%8E%B0%E7%B1%BB%E4%BC%BCkeep-alive%E6%95%88%E6%9E%9C%EF%BC%88%E4%BB%8E%E5%88%97%E8%A1%A8%E9%A1%B5%E8%BF%9B%E5%85%A5%E8%AF%A6%E6%83%85%E9%A1%B5%EF%BC%8C%E8%BF%94%E5%9B%9E%E5%88%97%E8%A1%A8%E9%A1%B5%E6%BB%9A%E5%8A%A8%E6%9D%A1%E4%BD%8D%E7%BD%AE%E4%B8%8D%E5%8F%98%EF%BC%89/</url>
+      
+        <content type="html"><![CDATA[<h1 id="uniapp-实现类似keep-alive效果（从列表页进入详情页，返回列表页滚动条位置不变）"><a href="#uniapp-实现类似keep-alive效果（从列表页进入详情页，返回列表页滚动条位置不变）" class="headerlink" title="uniapp 实现类似keep-alive效果（从列表页进入详情页，返回列表页滚动条位置不变）"></a>uniapp 实现类似keep-alive效果（从列表页进入详情页，返回列表页滚动条位置不变）</h1><p><img src="https://pic.imgdb.cn/item/6373288c16f2c2beb106ef22.png"><br>uniapp的页面生命周期函数onPageScroll可以拿到滚动距离的值</p><h2 id="将列表页滚动的距离scrollTop值-存到data中"><a href="#将列表页滚动的距离scrollTop值-存到data中" class="headerlink" title="将列表页滚动的距离scrollTop值 存到data中"></a>将列表页滚动的距离scrollTop值 存到data中</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">onPageScroll : function(e) &#123; </span><br><span class="line">    this.scrollTop = e.scrollTop; </span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure><h2 id="在点击跳转详情的方法中，将scrollTop值存缓存"><a href="#在点击跳转详情的方法中，将scrollTop值存缓存" class="headerlink" title="在点击跳转详情的方法中，将scrollTop值存缓存"></a>在点击跳转详情的方法中，将scrollTop值存缓存</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">toDetail(id) &#123;</span><br><span class="line">   uni.setStorage(&#123;</span><br><span class="line">    key:&quot;listTop&quot;,</span><br><span class="line">    data:this.scrollTop</span><br><span class="line">   &#125;)</span><br><span class="line">   ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h2 id="返回列表页时，在onShow中使用uni-pageScrollTo-将缓存的scrollTop值渲染到页面上。"><a href="#返回列表页时，在onShow中使用uni-pageScrollTo-将缓存的scrollTop值渲染到页面上。" class="headerlink" title="返回列表页时，在onShow中使用uni.pageScrollTo 将缓存的scrollTop值渲染到页面上。"></a>返回列表页时，在onShow中使用uni.pageScrollTo 将缓存的scrollTop值渲染到页面上。</h2><p><img src="https://pic.imgdb.cn/item/6373286f16f2c2beb106c9a9.png"></p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">onShow() &#123;</span><br><span class="line">//滚动条</span><br><span class="line">  uni.getStorage(&#123;</span><br><span class="line">     key:&quot;listTop&quot;,</span><br><span class="line">     success: (res) =&gt; &#123;</span><br><span class="line">      if(!isNaN(res.data))&#123;</span><br><span class="line">      var lefts = uni.pageScrollTo(&#123;</span><br><span class="line">        scrollTop:res.data,</span><br><span class="line">        duration:0</span><br><span class="line">      &#125;)</span><br><span class="line">      &#125;</span><br><span class="line">     &#125;</span><br><span class="line">  &#125;)</span><br><span class="line">&#125;,</span><br></pre></td></tr></table></figure><h2 id="列表页面关闭时将scrollTop值清空"><a href="#列表页面关闭时将scrollTop值清空" class="headerlink" title="列表页面关闭时将scrollTop值清空"></a>列表页面关闭时将scrollTop值清空</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">onUnload() &#123;</span><br><span class="line">    uni.setStorage(&#123;</span><br><span class="line">    key:&quot;listTop&quot;,</span><br><span class="line">    data:0</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> uniapp遇见的一些问题 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> uniapp </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hexo增添公告栏计时器小部件</title>
       <link href="/2022/11/11/Hexo%E5%A2%9E%E6%B7%BB%E5%85%AC%E5%91%8A%E6%A0%8F%E8%AE%A1%E6%97%B6%E5%99%A8%E5%B0%8F%E9%83%A8%E4%BB%B6/"/>
       <url>/2022/11/11/Hexo%E5%A2%9E%E6%B7%BB%E5%85%AC%E5%91%8A%E6%A0%8F%E8%AE%A1%E6%97%B6%E5%99%A8%E5%B0%8F%E9%83%A8%E4%BB%B6/</url>
