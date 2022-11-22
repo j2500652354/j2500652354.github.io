@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>hexo中引入iconfont自定义图标</title>
+      <link href="/2022/11/22/hexo%E4%B8%AD%E5%BC%95%E5%85%A5iconfont%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E6%A0%87/"/>
+      <url>/2022/11/22/hexo%E4%B8%AD%E5%BC%95%E5%85%A5iconfont%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E6%A0%87/</url>
+      
+        <content type="html"><![CDATA[<h2 id="新建图标项目"><a href="#新建图标项目" class="headerlink" title="新建图标项目"></a>新建图标项目</h2><ul><li>搜索自己心仪的图标，然后选择添加入库，加到购物车</li><li>选择完毕后点击右上角的购物车图标，打开侧栏，选择添加到项目，如果没有项目就新建一个，如下：<br><img src="https://pic.imgdb.cn/item/637c865416f2c2beb1fc1109.png"></li><li>可以通过上方顶栏菜单 -&gt; 资源管理 -&gt; 我的项目，找到之前添加的图标项目。(现在的 iconfont 可以在图标库的项目设置里直接打开彩色设置，然后采用 fontclass 的引用方式即可使用多彩图标。但是单一项目彩色图标上限是 40 个图标，酌情采用。)<br><img src="https://pic.imgdb.cn/item/637c873c16f2c2beb1fdc0f0.png"><br><img src="https://pic.imgdb.cn/item/637c874916f2c2beb1fdd598.png"></li></ul><h2 id="引入图标"><a href="#引入图标" class="headerlink" title="引入图标"></a>引入图标</h2><ul><li>线上引入方案，我使用的是官方文档中最便捷的 font-class 方案。这一方案偶尔会出现图标加载不出的情况。但是便于随时对图标库进行升级，换一下在线链接即可，适合新手使用。最新版本的 iconfont 支持直接在项目设置中开启彩色图标，从而实现直接用 class 添加多彩色图标。（推荐直接用这个即可）</li><li>在 source\css\custom.css 中填写如下内容，引入 Font-class 的线上资源：</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">@import &quot;//at.alicdn.com/t/c/font_3785958_78091558z5o.css&quot;;</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>更推荐在在主题配置文件 inject 配置项进行全局引入：</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">head:</span><br><span class="line">    - &lt;link rel=&quot;stylesheet&quot; href=&quot;//at.alicdn.com/t/c/font_3785958_78091558z5o.css&quot; media=&quot;defer&quot; onload=&quot;this.media=&#x27;all&#x27;&quot;&gt;</span><br><span class="line"> bottom:  </span><br><span class="line">    - &lt;script async src=&quot;//at.alicdn.com/t/c/font_3785958_78091558z5o.js&quot;&gt;&lt;/script&gt; </span><br></pre></td></tr></table></figure><ul><li>可以通过自己的阿里图标库的 font-class 方案查询复制相应的代码<br><img src="https://pic.imgdb.cn/item/637c890b16f2c2beb100adda.png"></li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">关于: /about/ || iconfont icon-aixin-copy</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> 博客教程 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> hexo </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hexo留言板中添加两句诗句</title>
       <link href="/2022/11/21/hexo%E7%95%99%E8%A8%80%E6%9D%BF%E4%B8%AD%E6%B7%BB%E5%8A%A0%E4%B8%A4%E5%8F%A5%E8%AF%97%E5%8F%A5/"/>
       <url>/2022/11/21/hexo%E7%95%99%E8%A8%80%E6%9D%BF%E4%B8%AD%E6%B7%BB%E5%8A%A0%E4%B8%A4%E5%8F%A5%E8%AF%97%E5%8F%A5/</url>
