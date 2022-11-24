@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>在gitee上用git提交项目</title>
+      <link href="/2022/11/22/%E5%9C%A8gitee%E4%B8%8A%E7%94%A8git%E6%8F%90%E4%BA%A4%E9%A1%B9%E7%9B%AE/"/>
+      <url>/2022/11/22/%E5%9C%A8gitee%E4%B8%8A%E7%94%A8git%E6%8F%90%E4%BA%A4%E9%A1%B9%E7%9B%AE/</url>
+      
+        <content type="html"><![CDATA[<h2 id="首先安装git，注册登录gitee码云。"><a href="#首先安装git，注册登录gitee码云。" class="headerlink" title="首先安装git，注册登录gitee码云。"></a>首先安装git，注册登录gitee码云。</h2><p>main分支：</p><ul><li>新建仓库，开源为公开（其他选项不用管）</li><li>找到你要提交到gitee的项目右键选择Git Bash here。<br><img src="https://pic.imgdb.cn/item/637d790416f2c2beb16bafa8.png"><br>先全局配置</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;gitee用户名&quot;</span><br><span class="line">git config --global user.email &quot;绑定邮箱&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure><ul><li>首先，如果新项目没有使用过Git的话，险要初始化一下Git，切换到项目目录，终端执行git init即可，下面是三步也是在项目目录下执行的。下面这三步很重要：</li></ul><p>检查项目的状态</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>把所有的文件都添加到暂存区</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br></pre></td></tr></table></figure><p>在本地提交代码说明</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git commit -m &quot;add files&quot;</span><br></pre></td></tr></table></figure><p>完成上面这三步后，再检查项目的状态，会提示没有文件需要提交了，然后就可以进行下面的操作，将本地仓库的代码提交到云端</p><ul><li>正常情况下是在项目目录下执行如下两行命令：</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;!-- gitee项目地址 --&gt;</span><br><span class="line">git remote add origin https://gitee.com/blue-Luckyj/bluelucky.git</span><br><span class="line">&lt;!--  提交到gitee--&gt;</span><br><span class="line">git push -u origin main</span><br><span class="line"></span><br></pre></td></tr></table></figure><ul><li>但执行第一行时可能会报错，error: remote origin already exists.这说明远程仓库已经存在，可能之前自己提交过，那么需要如下操作：</li></ul><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">1、先输入git remote rm origin 删除关联的origin的远程库</span><br><span class="line">2、关联自己的仓库 git remote add origin https://gitee.com/xxxxxx.git，这里我应该是git remote add origin https://gitee.com/blue-Luckyj/bluelucky.git</span><br><span class="line">3、最后git push -u origin main，这样就推送到自己的仓库了。</span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure><ul><li>刷新gitee项目所在页面，就可以看到自己提交的代码了</li></ul>]]></content>
+      
+      
+      <categories>
+          
+          <category> git </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>hexo中引入iconfont自定义图标</title>
       <link href="/2022/11/22/hexo%E4%B8%AD%E5%BC%95%E5%85%A5iconfont%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E6%A0%87/"/>
       <url>/2022/11/22/hexo%E4%B8%AD%E5%BC%95%E5%85%A5iconfont%E8%87%AA%E5%AE%9A%E4%B9%89%E5%9B%BE%E6%A0%87/</url>
