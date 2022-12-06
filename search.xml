@@ -4,6 +4,81 @@
   
     
     <entry>
+      <title>js中使用filiter去重</title>
+      <link href="/2022/11/25/js%E4%B8%AD%E4%BD%BF%E7%94%A8filiter%E5%8E%BB%E9%87%8D/"/>
+      <url>/2022/11/25/js%E4%B8%AD%E4%BD%BF%E7%94%A8filiter%E5%8E%BB%E9%87%8D/</url>
+      
+        <content type="html"><![CDATA[<h2 id="js中使用filiter去重"><a href="#js中使用filiter去重" class="headerlink" title="js中使用filiter去重"></a>js中使用filiter去重</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function unique(arr) &#123;</span><br><span class="line">  return arr.filter(function(item, index, arr) &#123;</span><br><span class="line">    //当前元素，在原始数组中的第一个索引==当前索引值，否则返回当前元素</span><br><span class="line">    return arr.indexOf(item, 0) === index;</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">var arr = [1,1,&#x27;RUNOOB&#x27;,&#x27;RUNOOB&#x27;,true,true,15];</span><br><span class="line">console.log(unique(arr))</span><br><span class="line">// [1, &quot;RUNOOB&quot;, true, 15]</span><br><span class="line"></span><br></pre></td></tr></table></figure><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">var arr = [&#x27;apple&#x27;,&#x27;strawberry&#x27;,&#x27;banana&#x27;,&#x27;pear&#x27;,&#x27;apple&#x27;,&#x27;orange&#x27;,&#x27;orange&#x27;,&#x27;strawberry&#x27;]</span><br><span class="line"> var temp_arr = arr.filter(function (element, index, self) &#123;</span><br><span class="line">      return self.indexOf(element) === index</span><br><span class="line">    &#125;)</span><br><span class="line"> console.log(temp_arr)</span><br><span class="line"></span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>前端实现模糊查询效果</title>
+      <link href="/2022/11/25/%E5%89%8D%E7%AB%AF%E5%AE%9E%E7%8E%B0%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2%E6%95%88%E6%9E%9C/"/>
+      <url>/2022/11/25/%E5%89%8D%E7%AB%AF%E5%AE%9E%E7%8E%B0%E6%A8%A1%E7%B3%8A%E6%9F%A5%E8%AF%A2%E6%95%88%E6%9E%9C/</url>
+      
+        <content type="html"><![CDATA[<h2 id="前端实现模糊查询效果"><a href="#前端实现模糊查询效果" class="headerlink" title="前端实现模糊查询效果"></a>前端实现模糊查询效果</h2><p>话不多说，直接上代码。</p><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">    &lt;div class=&quot;safetyInfo&quot;&gt;</span><br><span class="line">        &lt;el-input placeholder=&quot;请输入&quot;</span><br><span class="line">                       v-model=&quot;search&quot;</span><br><span class="line">                       @input=&quot;submitFun&quot;</span><br><span class="line">                       ref=&#x27;searchInput&#x27;&gt;&lt;/el-input&gt;</span><br><span class="line"> </span><br><span class="line">        &lt;ul v-for=&quot;(list,index) in searchData&quot;</span><br><span class="line">            :key=&quot;index&quot;&gt;</span><br><span class="line">            &lt;li&gt;</span><br><span class="line">                &lt;span&gt;&#123;&#123;list.phoneName&#125;&#125;&lt;/span&gt;</span><br><span class="line">                &lt;span&gt;&#123;&#123;list.ascriptionPhone&#125;&#125;&lt;/span&gt;</span><br><span class="line">            &lt;/li&gt;</span><br><span class="line">        &lt;/ul&gt;</span><br><span class="line">    &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">    name: &#x27;HelloWorld&#x27;,</span><br><span class="line">    data() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            search: &#x27;&#x27;,</span><br><span class="line">            searchData: &#x27;&#x27;,</span><br><span class="line">            products: [</span><br><span class="line">                //假数据</span><br><span class="line">                &#123;</span><br><span class="line">                    &#x27;ascriptionPhone&#x27;: &#x27;17000000000&#x27;,</span><br><span class="line">                    &#x27;phoneName&#x27;: &#x27;张三&#x27;,</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    &#x27;ascriptionPhone&#x27;: &#x27;18000000000&#x27;,</span><br><span class="line">                    &#x27;phoneName&#x27;: &#x27;李四&#x27;,</span><br><span class="line">                &#125;,</span><br><span class="line">                &#123;</span><br><span class="line">                    &#x27;ascriptionPhone&#x27;: &#x27;18000000000&#x27;,</span><br><span class="line">                    &#x27;phoneName&#x27;: &#x27;王麻子&#x27;,</span><br><span class="line">                &#125;</span><br><span class="line">            ]</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    created () &#123;</span><br><span class="line">        this.inintData();</span><br><span class="line">    &#125;,</span><br><span class="line">    methods: &#123;</span><br><span class="line">        inintData() &#123;</span><br><span class="line">            this.searchData = this.products;</span><br><span class="line">        &#125;,</span><br><span class="line">        submitFun() &#123;</span><br><span class="line">            </span><br><span class="line">            let search = this.search;</span><br><span class="line">            this.searchData = this.products.filter(function (product) &#123;</span><br><span class="line">                console.log(&#x27;过滤&#x27;, product);</span><br><span class="line">                let searchField = &#123; phoneName: product.phoneName, ascriptionPhone: product.ascriptionPhone &#125;;</span><br><span class="line">                return Object.keys(searchField).some(function (key) &#123;</span><br><span class="line">                    console.log(&#x27;key值&#x27;, key);</span><br><span class="line">                    return String(product[key]).toLowerCase().indexOf(search) &gt; -1;</span><br><span class="line">                &#125;);</span><br><span class="line">            &#125;);</span><br><span class="line">        &#125;</span><br><span class="line"> </span><br><span class="line">    &#125;</span><br><span class="line"> </span><br><span class="line">&#125;;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>]]></content>
+      
+      
+      <categories>
+          
+          <category> javascript </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> js </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>Electron+vue搭建项目</title>
+      <link href="/2022/11/24/Electron-vue%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/"/>
+      <url>/2022/11/24/Electron-vue%E6%90%AD%E5%BB%BA%E9%A1%B9%E7%9B%AE/</url>
+      
+        <content type="html"><![CDATA[<h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>最近公司想要开发一款桌面应用，在众多的跨平台桌面框架中，我选择了electron，主要的原因是electron使用 JavaScript，HTML 和 CSS 构建跨平台的桌面应用程序。相对于其他桌面应用框架，electron相对于前端来说上手起来比较简单。因为之前的技术栈大部分用的Vue.js，所以想采用vue + electron的方式快速迁移之前的项目。</p><h2 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h2><p>查阅了很多资料，我总结了以下几种方式进行融合。</p><ul><li>1、electron-quick-start + vue</li><li>2、vue cli + electron</li><li>3、vue-electron</li><li>4、quasar + electron</li><li>5、vue-cli + vue-cli-plugin-electron-builder</li></ul><h3 id="一、electron-quick-start-vuecli"><a href="#一、electron-quick-start-vuecli" class="headerlink" title="一、electron-quick-start + vuecli"></a>一、electron-quick-start + vuecli</h3><p>在electron官网中提供一个快速创建electron 项目的模板<a href="https://"></a><a href="https://github.com/electron/electron-quick-start">https://github.com/electron/electron-quick-start</a><br><img src="https://pic.imgdb.cn/item/637f387316f2c2beb1cf2183.png"></p><ol><li>clone 模板到本地</li><li>使用npm install安装包（electron安装缓慢，后续更新教程）</li><li>使用npm run start 就可以启动项目，测试是否安装成功<br><img src="https://pic.imgdb.cn/item/637f386116f2c2beb1cf0cf5.png"></li><li>使用vue-cli创建一个vue项目，然后打包到dist 目录下</li><li>修改main.js中加载页面的路径 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mainWindow.loadFile(&#x27;dist/index.html&#x27;)</span><br></pre></td></tr></table></figure></li></ol><h3 id="二、vue-cli-electron"><a href="#二、vue-cli-electron" class="headerlink" title="二、vue cli + electron"></a>二、vue cli + electron</h3><p>这个方法和第一个方法其实很相似，就是将第一种方法反过来用</p><ol><li>使用vue cli 创建一个vue 项目</li><li>使用 npm install –save-dev electron electron-packager安装包</li><li>在根目录中添加一个render.js</li><li>修改package.json 的入口 main: “render.js”</li><li>添加启动命令 “electron:serve”: “vue-cli-service electron:serve”</li><li>在render.js 中加载路径改为 mainWindow.loadURL(“<a href="http://localhost:8080&quot;">http://localhost:8080&quot;</a>)</li></ol><h3 id="三、vue-electron"><a href="#三、vue-electron" class="headerlink" title="三、vue-electron"></a>三、vue-electron</h3><ol><li><p>首先需要安装npm install -g vue-cli<br>  如果你已经安装了vue-cli3.0+，请使用npm install -g @vue&#x2F;cli-init拉取旧模板</p></li><li><p>使用vue init simulatedgreg&#x2F;electron-vue my-project，配置好相关信息<br><img src="https://pic.imgdb.cn/item/637f389816f2c2beb1cf4b3b.png"></p></li><li><p>cd my-project 进入到项目</p></li><li><p>yarn 安装包</p></li><li><p>yarn run dev 启动项目<br><img src="https://pic.imgdb.cn/item/637f38b316f2c2beb1cf6662.png"></p></li></ol><h3 id="四、quasar-electron"><a href="#四、quasar-electron" class="headerlink" title="四、quasar + electron"></a>四、quasar + electron</h3><p>这个方法使用的是quasar框架</p><ol><li>npm install -g @quasar&#x2F;cli 安装quasar脚手架</li><li>quasar create <folder_name> 创建一个工程</li><li>quasar mode add electron添加electron 模式</li><li>quasar build -m electron 打包</li></ol><h3 id="五、vue-cli-vue-cli-plugin-electron-builder-我使用的方法"><a href="#五、vue-cli-vue-cli-plugin-electron-builder-我使用的方法" class="headerlink" title="五、vue-cli + vue-cli-plugin-electron-builder (我使用的方法)"></a>五、vue-cli + vue-cli-plugin-electron-builder (我使用的方法)</h3><p>这个方法使用的是vue-cli 框架</p><ol><li>使用vue cli 创建一个vue 项目 vue create project</li><li>创建好项目，使用vue ui 添加插件 vue-cli-plugin-electron-builder，项目自动生成为electron项目</li><li>使用npm run electron:serve 就可以启动项目</li></ol>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> Electron-vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>在gitee上用git提交项目</title>
       <link href="/2022/11/22/%E5%9C%A8gitee%E4%B8%8A%E7%94%A8git%E6%8F%90%E4%BA%A4%E9%A1%B9%E7%9B%AE/"/>
       <url>/2022/11/22/%E5%9C%A8gitee%E4%B8%8A%E7%94%A8git%E6%8F%90%E4%BA%A4%E9%A1%B9%E7%9B%AE/</url>
