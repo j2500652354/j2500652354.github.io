@@ -316,5 +316,19 @@ hr:before {
     padding-left: 1.2rem
 }
 
+/* 评论区加背景 */
 
-  
+#veditor {
+    background-image: url(../images/valineBg.png);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: right;
+    background-color: rgba(255, 255, 255, 0);
+    resize: vertical
+}
+
+/* 翻页按钮居中 */
+#pagination {
+	width: 100%;
+	margin: auto;
+  }
