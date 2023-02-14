@@ -1,0 +1,582 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"><title>前端面试题 | 柯基の小窝</title><meta name="author" content="柯基の小窝"><meta name="copyright" content="柯基の小窝"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="js相关let和constlet  es6新增了let声明变量的方式，和var类似 let 变量  const用来声明常量 和var相比  就是 不允许变量提升，存在暂时性死区，不允许重复声明，块级作用域 解构赋值123456789&#x2F;&#x2F; 数组，使用的时候名字可以任意const [a,b,c,d] &#x3D; [1,2,3,4]&#x2F;&#x2F; 对象，解构默认定义对象中的keyconst &amp;#123;name, id&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端面试题">
+<meta property="og:url" content="http://example.com/2023/02/10/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/index.html">
+<meta property="og:site_name" content="柯基の小窝">
+<meta property="og:description" content="js相关let和constlet  es6新增了let声明变量的方式，和var类似 let 变量  const用来声明常量 和var相比  就是 不允许变量提升，存在暂时性死区，不允许重复声明，块级作用域 解构赋值123456789&#x2F;&#x2F; 数组，使用的时候名字可以任意const [a,b,c,d] &#x3D; [1,2,3,4]&#x2F;&#x2F; 对象，解构默认定义对象中的keyconst &amp;#123;name, id&amp;">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://pic1.imgdb.cn/item/6371a9b116f2c2beb1036e01.jpg">
+<meta property="article:published_time" content="2023-02-10T06:13:18.000Z">
+<meta property="article:modified_time" content="2023-02-10T06:22:39.738Z">
+<meta property="article:author" content="柯基の小窝">
+<meta property="article:tag" content="前端面试题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic1.imgdb.cn/item/6371a9b116f2c2beb1036e01.jpg"><link rel="shortcut icon" href="/images/bitbug_favicon.ico"><link rel="canonical" href="http://example.com/2023/02/10/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: {"path":"/search.xml","preload":false,"languages":{"hits_empty":"找不到您查询的内容：${query}"}},
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"limitCount":50,"languages":{"author":"作者: 柯基の小窝","link":"链接: ","source":"来源: 柯基の小窝","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。"}},
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/flickr-justified-gallery/dist/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '前端面试题',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2023-02-10 14:22:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><link rel="stylesheet" href="/bgcss/background.css"><link rel="stylesheet" href="/bgcss/ancientPoetry.css"><link rel="stylesheet" href="//at.alicdn.com/t/c/font_3785958_6sa28nf3f99.css" media="defer" onload="this.media='all'"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.css" /><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 6.3.0"></head><body><div id="loading-box"><div class="loading-left-bg"></div><div class="loading-right-bg"></div><div class="spinner-box"><div class="configure-border-1"><div class="configure-core"></div></div><div class="configure-border-2"><div class="configure-core"></div></div><div class="loading-word">加载中...</div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.body.style.overflow = 'auto';
+    document.getElementById('loading-box').classList.add("loaded")
+  },
+  initLoading: () => {
+    document.body.style.overflow = '';
+    document.getElementById('loading-box').classList.remove("loaded")
+
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();}, 10000);
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="/images/avatar.jpg" onerror="onerror=null;src='/images/404.jpg'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-aixin-copy"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-file-code"></i><span> Demo</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/html/fireworks/index.html"><i class="fa-fw iconfont icon-yanhua"></i><span> 烟花</span></a></li></ul></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://pic1.imgdb.cn/item/6371a9b116f2c2beb1036e01.jpg')"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">柯基の小窝</a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 归档</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" href="/messageboard/"><i class="fa-fw fas fa-comment"></i><span> 留言板</span></a></div><div class="menus_item"><a class="site-page" href="/gallery/"><i class="fa-fw fas fa-image"></i><span> 相册</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> 友链</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw iconfont icon-aixin-copy"></i><span> 关于</span></a></div><div class="menus_item"><a class="site-page group" href="javascript:void(0);"><i class="fa-fw fas fa-file-code"></i><span> Demo</span><i class="fas fa-chevron-down"></i></a><ul class="menus_item_child"><li><a class="site-page child" href="/html/fireworks/index.html"><i class="fa-fw iconfont icon-yanhua"></i><span> 烟花</span></a></li></ul></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">前端面试题</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-02-10T06:13:18.000Z" title="发表于 2023-02-10 14:13:18">2023-02-10</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2023-02-10T06:22:39.738Z" title="更新于 2023-02-10 14:22:39">2023-02-10</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">4.7k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>15分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="前端面试题"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h2 id="js相关"><a href="#js相关" class="headerlink" title="js相关"></a>js相关</h2><h4 id="let和const"><a href="#let和const" class="headerlink" title="let和const"></a>let和const</h4><p>let  es6新增了let声明变量的方式，和var类似</p>
+<p>let 变量</p>
+<p> const用来声明常量</p>
+<p><strong>和var相比  就是 不允许变量提升，存在暂时性死区，不允许重复声明，块级作用域</strong></p>
+<h4 id="解构赋值"><a href="#解构赋值" class="headerlink" title="解构赋值"></a>解构赋值</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 数组，使用的时候名字可以任意</span></span><br><span class="line"><span class="keyword">const</span> [a,b,c,d] = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 对象，解构默认定义对象中的key</span></span><br><span class="line"><span class="keyword">const</span> &#123;name, id&#125; = &#123;</span><br><span class="line">  <span class="attr">name</span>: <span class="string">&#x27;张三&#x27;</span>,</span><br><span class="line">  <span class="attr">id</span>: <span class="number">19</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<h4 id="模版字符串"><a href="#模版字符串" class="headerlink" title="模版字符串"></a>模版字符串</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//方便了字符串的拼接，使用反引号语法``，反引号内部可以通过$&#123;&#125;插入表达式</span></span><br><span class="line"><span class="keyword">const</span> name = <span class="string">&#x27;张三&#x27;</span></span><br><span class="line"><span class="keyword">const</span> msg = <span class="string">`hello<span class="subst">$&#123;name&#125;</span>`</span></span><br></pre></td></tr></table></figure>
+<h4 id="字符串的-includes"><a href="#字符串的-includes" class="headerlink" title="字符串的 includes"></a>字符串的 includes</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//用来查找一个字符串中是否包含另一个字符串，返回值为布尔</span></span><br><span class="line"><span class="keyword">const</span> name = <span class="string">&#x27;hello 张三&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(name.<span class="title function_">includes</span>(<span class="string">&#x27;ll&#x27;</span>))</span><br></pre></td></tr></table></figure>
+<h4 id="字符串的-startsWith-endsWith"><a href="#字符串的-startsWith-endsWith" class="headerlink" title="字符串的 startsWith  endsWith"></a>字符串的 startsWith  endsWith</h4><p>用来判断某字符串是否以某字符串开头  用来判断某字符串是否以某字符串结尾</p>
+<h4 id="函数-尖头函数"><a href="#函数-尖头函数" class="headerlink" title="函数-尖头函数"></a>函数-尖头函数</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params"></span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> <span class="title function_">fn</span> = (<span class="params"></span>) =&gt; &#123;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//注意：</span></span><br><span class="line"><span class="comment">//尖头函数花括号可以省略，省略后会默认return</span></span><br><span class="line"><span class="comment">//尖头函数中没有绑定this，this指向上下文</span></span><br></pre></td></tr></table></figure>
+<h4 id="函数-形参默认值-函数-形参解构-函数-形参剩余参数"><a href="#函数-形参默认值-函数-形参解构-函数-形参剩余参数" class="headerlink" title="函数-形参默认值  函数-形参解构  函数-形参剩余参数"></a>函数-形参默认值  函数-形参解构  函数-形参剩余参数</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//函数-形参解构</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">a = <span class="number">1</span>,b =<span class="number">2</span></span>) &#123;</span><br><span class="line">  <span class="keyword">return</span> a + b</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="title function_">fn</span>()) <span class="comment">// 3</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//函数-形参剩余参数</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">fn</span>(<span class="params">a, ...values</span>) &#123;</span><br><span class="line">  <span class="variable language_">console</span>.<span class="title function_">log</span>(values) <span class="comment">// [2,3,4]</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="title function_">fn</span>(<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="扩展运算符"><a href="#扩展运算符" class="headerlink" title="扩展运算符"></a>扩展运算符</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> b = [...a]</span><br><span class="line"></span><br><span class="line"><span class="comment">// 可以用于对象</span></span><br></pre></td></tr></table></figure>
+<h4 id="对象简写"><a href="#对象简写" class="headerlink" title="对象简写"></a>对象简写</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> a = <span class="number">1</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    a</span><br><span class="line">&#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<h4 id="对象方法简写"><a href="#对象方法简写" class="headerlink" title="对象方法简写"></a>对象方法简写</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    <span class="title function_">fn</span>(<span class="params"></span>) &#123; &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="对象key-使用表达式"><a href="#对象key-使用表达式" class="headerlink" title="对象key-使用表达式"></a>对象key-使用表达式</h4><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> name = <span class="string">&#x27;张三&#x27;</span></span><br><span class="line"><span class="keyword">let</span> key = <span class="string">&#x27;name&#x27;</span></span><br><span class="line"><span class="keyword">const</span> obj = &#123;</span><br><span class="line">    [key]: name</span><br><span class="line">&#125;</span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<h4 id="Object-assign"><a href="#Object-assign" class="headerlink" title="Object.assign"></a>Object.assign</h4><p>相当于一个浅拷贝   拷贝的是地址</p>
+<h4 id="Object-create"><a href="#Object-create" class="headerlink" title="Object.create"></a>Object.create</h4><p>创建一个对象,并将对象的<strong>proto</strong>指向参数对象</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> source = &#123; <span class="attr">b</span>: <span class="number">4</span>, <span class="attr">c</span>: <span class="number">5</span>, <span class="attr">obj</span>: &#123; <span class="attr">a</span>: <span class="number">1</span> &#125; &#125;;</span><br><span class="line"><span class="keyword">const</span> obj = <span class="title class_">Object</span>.<span class="title function_">create</span>(source)</span><br><span class="line"></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(obj)  </span><br><span class="line"></span><br><span class="line">   <span class="comment">//可以创建一个没有原型的对象</span></span><br><span class="line">    <span class="title class_">Object</span>.<span class="title function_">create</span>(<span class="literal">null</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="Promise"><a href="#Promise" class="headerlink" title="Promise"></a>Promise</h4><h4 id="ES6模块化-规范"><a href="#ES6模块化-规范" class="headerlink" title="ES6模块化: 规范"></a>ES6模块化: 规范</h4><p>commonJs模块</p>
+<p>导出:module.exports</p>
+<p>导入: require()</p>
+<p>其实就是把不同的功能   分配不同js文件  </p>
+<p><strong>web过渡时期的产品</strong></p>
+<p>AMD: AMD加载完模块后，就立马执行该模块 代表(require.js)</p>
+<p>CMD:CMD加载完某个模块后没有立即执行而是等到遇到require语句的时再执行(Sea.js)</p>
+<p>   <strong>web现在流行es6</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 单纯的运行某个文件</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">&#x27;./router.js&#x27;</span></span><br><span class="line"> </span><br></pre></td></tr></table></figure>
+<p><strong>默认导出,默认导入</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&#x27;配置路由&#x27;</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> obj = &#123; <span class="attr">name</span>: <span class="string">&#x27;张三&#x27;</span>, <span class="attr">age</span>: <span class="number">19</span> &#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> obj</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 默认导入: 名字任意</span></span><br><span class="line"><span class="keyword">import</span> obj <span class="keyword">from</span> <span class="string">&#x27;./router.js&#x27;</span></span><br><span class="line"> </span><br><span class="line">        <span class="title class_">Copied</span>!</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<p>注意: ⚠默认导出只能使用一次,所以也就是为什么默认引入可以使用任意名字接收</p>
+<p><strong>按需导出,按需导入</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> a = <span class="number">1</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">const</span> b = <span class="number">2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 名字要和导出的名字一致</span></span><br><span class="line"><span class="keyword">import</span> &#123; a, b &#125; <span class="keyword">from</span> <span class="string">&#x27;./router.js&#x27;</span></span><br><span class="line"> </span><br><span class="line">        <span class="title class_">Copied</span>!</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<p>注意:⚠导入的名字默认必须要和导出的名字一致,并用花括号括起来</p>
+<p><strong>按需导入可以起别名</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; a <span class="keyword">as</span> a1, b &#125; <span class="keyword">from</span> <span class="string">&#x27;./router.js&#x27;</span></span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(a1)</span><br><span class="line"><span class="variable language_">console</span>.<span class="title function_">log</span>(b)</span><br><span class="line">    </span><br></pre></td></tr></table></figure>
+<p><strong>同时引入默认和按需</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> user, &#123; b, c &#125; <span class="keyword">from</span> <span class="string">&#x27;./router.js&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>注意:⚠语法必须为import 默认导入, {}按需导入 from ‘路径’</p>
+<p><strong>全部引入</strong></p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> * <span class="keyword">as</span> moduleRouter <span class="keyword">from</span> <span class="string">&#x27;./router.js&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>注意:⚠返回值是一个对象,按需导出的变量添加到对象中的key,值会成为对象中的value,默认导出的key固定为default,值为导出的对象</p>
+<h4 id="null-和-undefind的区别"><a href="#null-和-undefind的区别" class="headerlink" title="null 和 undefind的区别"></a>null 和 undefind的区别</h4><p><strong>简单区分</strong></p>
+<p>总的来说 <code>null</code> 和 <code>undefined</code> 都代表空，主要区别在于 <code>undefined</code> 表示尚未初始化的变量的值，而 <code>null</code> 表示该变量有意缺少对象指向。</p>
+<ul>
+<li><p><code>undefined</code></p>
+</li>
+<li><ul>
+<li>这个变量从根本上就没有定义</li>
+<li>隐藏式 空值</li>
+</ul>
+</li>
+<li><p><code>null</code></p>
+</li>
+<li><p>这个值虽然定义了，但它并未指向任何内存中的对象</p>
+<ul>
+<li>声明式 空值</li>
+</ul>
+</li>
+</ul>
+<h2 id="vue相关"><a href="#vue相关" class="headerlink" title="vue相关"></a>vue相关</h2><h3 id="1-Vue的优点-vue的缺点"><a href="#1-Vue的优点-vue的缺点" class="headerlink" title="1.Vue的优点? vue的缺点?"></a>1.Vue的优点? vue的缺点?</h3><p><strong>优点:</strong> 渐进式，组件化，轻量级，虚拟dom，响应式，单页面路由，数据与视图分开<br> <strong>缺点:</strong> 单页面不利于seo，不支持IE8以下，首屏加载时间长</p>
+<h3 id="2-为什么说Vue是一个渐进式框架"><a href="#2-为什么说Vue是一个渐进式框架" class="headerlink" title="2.为什么说Vue是一个渐进式框架?"></a>2.为什么说Vue是一个渐进式<a href="https://link.juejin.cn?target=https%3A%2F%2Fso.csdn.net%2Fso%2Fsearch%3Fq%3D%E6%A1%86%E6%9E%B6%26spm%3D1001.2101.3001.7020">框架</a>?</h3><p><strong>渐进式:</strong> 就是，你想用啥你就用啥，咱也不强求你。你想用vuex就用，不用也行，你想用component就用，不用也可以,或者你可以选择不用，或者只选几样去用</p>
+<h3 id="3-Vue跟React的异同点"><a href="#3-Vue跟React的异同点" class="headerlink" title="3. Vue跟React的异同点?"></a>3. Vue跟React的异同点?</h3><p>相同点:</p>
+<ul>
+<li>都使用了虚拟dom</li>
+<li>组件化开发</li>
+<li>都是单向数据流(父子组件之间，不建议子修改父传下来的数据) 4.都支持服务端渲染 不同点:</li>
+<li>React的JSx, Vue的template</li>
+<li>数据变化，React手动(setState),Vue自动(初始化已响应式处理，Object.defineProperty)</li>
+<li>React单向绑定，Vue双向绑定·4.React的Redux,Vue的Vuex</li>
+</ul>
+<h3 id="4-MVVM是什么-和MVC有何区别呢"><a href="#4-MVVM是什么-和MVC有何区别呢" class="headerlink" title="4.MVVM是什么?和MVC有何区别呢?"></a>4.MVVM是什么?和MVC有何区别呢?</h3><h4 id="Mvc"><a href="#Mvc" class="headerlink" title="Mvc"></a>Mvc</h4><ul>
+<li>Model(模型):负责从数据库中取数据.</li>
+<li>View(视图):负责展示数据的地方</li>
+<li>Controller(控制器):用户交互的地方，例如点击事件等等·思想:Controller将Model的数据展示在View 上</li>
+</ul>
+<h4 id="MVVM"><a href="#MVVM" class="headerlink" title="MVVM"></a>MVVM</h4><p>VM: 也就是View-Model，数据的双向绑定将【模型】转化成【视图】，即后端传递的数据转化成所看到的页面。实现的方式是:数据绑定。二是将【视图】转化成【模型】，即将所看到的页面转化成后端的数据。实现的方式是:DOM事件监听。</p>
+<h4 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h4><p>整体看来，MVVM 比MVC精简很多，不仅简化了业务与界面的依赖，还解决了数据频繁更新的问题，不用再用选择器操作DOM元素。因为在MVVM 中，View不知道 Model的存在，Model和ViewModel也观察不到View，这种低耦合模式提高代码的可重用性 Vue是不是MVVM框架? Vue是MVVM框架，但是不是严格符合MVVM，因为MVVM规定Model和View不能直接通信，而Vue的ref可以做到这点</p>
+<h3 id="5-Vue和JQuery的区别在哪-为什么放弃JQuery用Vue"><a href="#5-Vue和JQuery的区别在哪-为什么放弃JQuery用Vue" class="headerlink" title="5. Vue和JQuery的区别在哪?为什么放弃JQuery用Vue?"></a>5. Vue和JQuery的区别在哪?为什么放弃JQuery用Vue?</h3><ul>
+<li>jQuery是直接操作DOM，Vue不直接操作DOM，Vue的数据与视图是分开的，Vue只需要操作数据就行</li>
+<li>jQuery的操作DOM行为是频繁的，而Vue利用虚拟DOM的技术，大大提高了更新DOM时的性能</li>
+<li>Vue中不倡导直接操作DOM，开发者只需要把大部分精力放在数据层面上</li>
+<li>Vue集成了一些库，大大提高开发效率，例如Route、Vuex等等</li>
+</ul>
+<h3 id="为什么data是一个函数-而不是对象"><a href="#为什么data是一个函数-而不是对象" class="headerlink" title=". 为什么data是一个函数 而不是对象"></a>. 为什么data是一个函数 而不是对象</h3><ul>
+<li>之所以data是一个函数，是因为一个组件可能会多处调用，而每一次调用就会执行data函数并返回新的数据对象，这样，可以避免多处调用之间的数据污染。</li>
+<li>简单理解就是 防止组件被多个页面使用时，造成的变量互相污染</li>
+</ul>
+<h3 id="Vue的生命周期，有哪些？"><a href="#Vue的生命周期，有哪些？" class="headerlink" title="Vue的生命周期，有哪些？"></a>Vue的生命周期，有哪些？</h3><ul>
+<li><code>beforeCreate</code>：实例话Vue，未初始化和响应式数据</li>
+<li><code>created</code>：已初始化和响应式数据，可访问数据</li>
+<li><code>beforeMount</code>：render调用，虚拟DOM生成，未转真实DOM</li>
+<li><code>mounted</code>：真实DOM挂载完成</li>
+<li><code>beforeUpdate</code>：数据更新，新虚拟DOM生成</li>
+<li><code>updated</code>：新旧虚拟DOM进行对比，打补丁，然后进行真实DOM更新</li>
+<li><code>beforeDestroy</code>：实例销毁前，仍可访问数据</li>
+<li><code>destroy</code>：实例销毁，子实例销毁，指令解绑，解绑本实例的事件</li>
+<li><code>activated</code>：keep-alive所缓存组件激活时调用</li>
+<li><code>deactivated</code>：keep-alive所缓存组件停用时调用</li>
+<li><code>errorCaptured</code>：子孙组件的错误捕获，此函数可返回false阻止继续向上传播</li>
+</ul>
+<h3 id="使用过哪些Vue的修饰符呢"><a href="#使用过哪些Vue的修饰符呢" class="headerlink" title=". 使用过哪些Vue的修饰符呢?"></a>. 使用过哪些Vue的修饰符呢?</h3><ul>
+<li><code>.once</code>：事件只触发一次</li>
+<li><code>.number</code>：将v-medol绑定的值转数字</li>
+<li><code>.trim</code>：讲v-model绑定的值首位空格给去掉</li>
+<li><code>.stop</code>：阻止事件冒泡</li>
+<li><code>.capture</code>：事件的捕获</li>
+<li><code>.self</code>：点击事件绑定本身才触发</li>
+<li><code>.lazy</code>：输入框失焦时才会更新v-model的值</li>
+<li><code>.prevent</code>：阻止默认事件</li>
+<li><code>.native</code>：绑定事件在自定义组件上时，确保能执行</li>
+<li><code>.left、.middle、.right</code>：鼠标左中右键的触发</li>
+<li><code>passive</code>：相当于给移动端滚动事件加一个<code>.lazy</code></li>
+<li><code>camel</code>：确保变量名会被识别成驼峰命名</li>
+<li><code>.sync</code>：简化子修改父值的步骤</li>
+</ul>
+<h3 id="使用过哪些Vue的内部指令呢？"><a href="#使用过哪些Vue的内部指令呢？" class="headerlink" title=".使用过哪些Vue的内部指令呢？"></a>.使用过哪些Vue的内部指令呢？</h3><ul>
+<li><code>v-text</code>：元素的textContent</li>
+<li><code>v-html</code>：元素的innerHTML</li>
+<li><code>v-show</code>：通过样式display改变显隐,控制的css</li>
+<li><code>v-if</code>：通过操作DOM改变显隐</li>
+<li><code>v-else</code>：配合v-if</li>
+<li><code>v-else-id</code>：配合v-else</li>
+<li><code>v-for</code>：循环渲染</li>
+<li><code>v-on</code>：绑定事件，缩写@</li>
+<li><code>v-bind</code>：绑定变量，缩写:</li>
+<li><code>v-model</code>：双向绑定</li>
+<li><code>v-slot</code>：插槽</li>
+<li><code>v-once</code>：只渲染一次</li>
+<li><code>v-pre</code>：跳过元素编译</li>
+<li><code>v-cloak</code>：隐藏双括号，有值显示</li>
+</ul>
+<h3 id="v-if和v-show有何区别？"><a href="#v-if和v-show有何区别？" class="headerlink" title="v-if和v-show有何区别？"></a>v-if和v-show有何区别？</h3><ul>
+<li><code>v-if</code>：通过操作DOM来控制显隐，适用于偶尔的情况,因为每一次执行它都要生成和销毁,v-if有着更高的切换消耗</li>
+<li><code>v-show</code>：通过改变css样式display属性控制显隐，适用于频繁显隐的情况,不会销毁,v-show在初始渲染消耗更高点</li>
+<li>频繁或者大数量显隐使用v-show ，否则使用v-if</li>
+</ul>
+<h3 id="为什么v-if和v-for不建议用在同一标签？"><a href="#为什么v-if和v-for不建议用在同一标签？" class="headerlink" title="为什么v-if和v-for不建议用在同一标签？"></a>为什么v-if和v-for不建议用在同一标签？</h3><p><code>v-for</code>优先级高于<code>v-if</code>，每项都通过<code>v-for</code>渲染出来后再去通过<code>v-if</code>判断显隐,过程中会增加无用的dom操作,渲染了无用的节点</p>
+<h3 id="组件之间的传值方式有哪些"><a href="#组件之间的传值方式有哪些" class="headerlink" title=".组件之间的传值方式有哪些?"></a>.组件之间的传值方式有哪些?</h3><ul>
+<li>父传子： 组件使用<code>props</code>进行接收</li>
+<li>子传父： 子组件使用<code>$emit</code>+事件对父组件进行传值</li>
+<li>父子之间通过<code>$parent</code>和<code>$chidren</code>获取实例进而通信</li>
+<li>使用<code>$refs</code>获取组件实例，进而获取数据。使用vuex进行状态管理</li>
+<li>使用<code>eventBus</code>进行跨组件触发事件，进而传递数据</li>
+<li>使用浏览器本地缓存，例如<code>localstorage``sessionStorage</code></li>
+</ul>
+<h3 id="路由有哪些模式呢-又有什么不同呢"><a href="#路由有哪些模式呢-又有什么不同呢" class="headerlink" title="路由有哪些模式呢?又有什么不同呢?"></a>路由有哪些模式呢?又有什么不同呢?</h3><ul>
+<li>hash模式:通过#号后面的内容的更改，触发hashchange事件，实现路由切换，而不刷新页面</li>
+<li>history模式:通过pushState和replaceState切换url，触发popstate事件，实现路由切换，需要后端配合</li>
+</ul>
+<h3 id="路由的钩子函数？"><a href="#路由的钩子函数？" class="headerlink" title="路由的钩子函数？"></a>路由的钩子函数？</h3><ul>
+<li>beforeEach：跳转路由前</li>
+<li><ul>
+<li>to：将要跳转进入的路由对象</li>
+<li>from：将要离开的路由对象</li>
+<li>next：执行跳转的方法</li>
+</ul>
+</li>
+<li>afterEach：路由跳转后</li>
+<li><ul>
+<li>to：将要跳转进入的路由对象 <strong>组件内路由钩子</strong></li>
+</ul>
+</li>
+<li>beforeRouteEnter(to, from, next)：跳转到路由渲染组件时触发</li>
+<li>beforeRouteUpdate(to, from, next)：跳转到路由且组件被复用时触发</li>
+<li>beforeRouteLeave(to, from, next)：跳转到路由且离开组件时触发</li>
+</ul>
+<h3 id="如何设置动态class，动态style？"><a href="#如何设置动态class，动态style？" class="headerlink" title="如何设置动态class，动态style？"></a>如何设置动态class，动态style？</h3><ul>
+<li>动态class对象：<code>&lt;div :class=&quot;&#123; &#39;is-active&#39;: true, &#39;red&#39;: isRed &#125;&quot;&gt;&lt;/div&gt;</code></li>
+<li>动态class数组：<code>&lt;div :class=&quot;[&#39;is-active&#39;, isRed ? &#39;red&#39; : &#39;&#39; ]&quot;&gt;&lt;/div&gt;</code></li>
+<li>动态style对象：<code>&lt;div :style=&quot;&#123; color: textColor, fontSize: &#39;18px&#39; &#125;&quot;&gt;&lt;/div&gt;</code></li>
+</ul>
+<h3 id="vuex的有哪些属性？用处是什么？"><a href="#vuex的有哪些属性？用处是什么？" class="headerlink" title="vuex的有哪些属性？用处是什么？"></a>vuex的有哪些属性？用处是什么？</h3><ul>
+<li><code>state</code>：定义初始状态</li>
+<li><code>getter</code>：从store从取数据</li>
+<li><code>mutation</code>：更改store中状态，只能同步操作</li>
+<li><code>action</code>：用于提交mutation，而不直接更改状态，可异步操作</li>
+<li><code>module</code>：store的模块拆分</li>
+</ul>
+<h3 id="watch有哪些属性，分别有什么用？"><a href="#watch有哪些属性，分别有什么用？" class="headerlink" title="watch有哪些属性，分别有什么用？"></a>watch有哪些属性，分别有什么用？</h3><ul>
+<li><code>immediate</code>：初次加载时立即执行</li>
+<li><code>deep</code>：是否进行深度监听</li>
+<li><code>handler</code>：监听的回调函数</li>
+</ul>
+<h3 id="一般在哪个生命周期请求异步数据"><a href="#一般在哪个生命周期请求异步数据" class="headerlink" title="一般在哪个生命周期请求异步数据"></a>一般在哪个生命周期请求异步数据</h3><ul>
+<li>可以啊钩子函数中的 <code>created</code>、<code>beforeMount</code>、<code>mounted</code> 中进行调用，因为在这三个钩子函数中，data 已经创建，可以将服务端端返回的数据进行赋值。</li>
+<li>在created中最好</li>
+<li><ul>
+<li>能更快获取到服务端数据，减少页面加载时间，用户体验更好；</li>
+</ul>
+</li>
+<li><ul>
+<li>SSR不支持 beforeMount 、mounted 钩子函数，放在 created 中有助于一致性。</li>
+</ul>
+</li>
+</ul>
+<h3 id="父子组件生命周期顺序？"><a href="#父子组件生命周期顺序？" class="headerlink" title="父子组件生命周期顺序？"></a>父子组件生命周期顺序？</h3><p>父beforeCreate -&gt; 父created -&gt; 父beforeMount -&gt; 子beforeCreate -&gt; 子created -&gt; 子beforeMount -&gt; 子mounted -&gt; 父mounted</p>
+<h3 id="为什么不建议用index做key，为什么不建议用随机数做key？"><a href="#为什么不建议用index做key，为什么不建议用随机数做key？" class="headerlink" title="为什么不建议用index做key，为什么不建议用随机数做key？"></a>为什么不建议用index做key，为什么不建议用随机数做key？</h3><ul>
+<li>用index和用随机数都是同理，随机数每次都在变，做不到专一性，也很消耗性能</li>
+</ul>
+<h3 id="使用过那些插槽的使用-原理是什么"><a href="#使用过那些插槽的使用-原理是什么" class="headerlink" title="使用过那些插槽的使用,原理是什么"></a>使用过那些插槽的使用,原理是什么</h3><ul>
+<li>默认插槽 - 又名匿名查抄，<strong>当slot没有指定name属性值的时候一个默认显示插槽，一个组件内只有有一个匿名插槽</strong></li>
+<li>具名插槽：<strong>带有具体名字的插槽，也就是带有name属性的slot，一个组件可以出现多个具名插槽。</strong></li>
+<li>作用域插槽<strong>：默认插槽、具名插槽的一个变体，可以是匿名插槽，也可以是具名插槽，该插槽的不同点是在子组件渲染作用域插槽时，可以将子组件内部的数据传递给父组件，让父组件根据子组件的传递过来的数据决定如何渲染该插槽。 实现原理：当子组件vm实例化时，获取到父组件传入的slot标签的内容，存放在<code>vm.$slot</code>中，默认插槽为<code>vm.$slot.default</code>，具名插槽为<code>vm.$slot.xxx</code>，xxx 为插槽名，当组件执行渲染函数时候，遇到slot标签，使用<code>$slot</code>中的内容进行替换，此时可以为插槽传递数据，若存在数据，则可称该插槽为作用域插槽。 。</strong></li>
+</ul>
+<h3 id="是否使用过滤器，过滤器的作用-怎么使用"><a href="#是否使用过滤器，过滤器的作用-怎么使用" class="headerlink" title="是否使用过滤器，过滤器的作用,怎么使用"></a>是否使用过滤器，过滤器的作用,怎么使用</h3><ul>
+<li>顾名思义,过滤器就是用来过滤的数据的,在Vue中使用<code>filters</code>来过滤数据，<code>filters</code>不会修改数据，而是过滤数据，改变用户看到的输出（计算属性 <code>computed</code> ，方法 <code>methods</code> 都是通过修改数据来处理数据格式的输出显示）。 <strong>使用场景：</strong></li>
+<li>需要格式化数据的情况，比如需要处理时间、价格等数据格式的输出 / 显示。</li>
+<li>比如后端返回一个 <strong>年月日的日期字符串</strong>，前端需要展示为 <strong>多少天前</strong> 的数据格式，此时就可以用<code>fliters</code>过滤器来处理数据。</li>
+</ul>
+<p><strong>使用</strong></p>
+<ul>
+<li>在<strong>插值表达式 \</strong><code>&#123;&#123; &#125;&#125;</code> 和 <code>v-bind</code>*<em> 表达式*</em> 中，然后放在操作符“ <code>|</code> ”后面进行指示。</li>
+</ul>
+<h3 id="自定义指令的钩子函数？"><a href="#自定义指令的钩子函数？" class="headerlink" title="自定义指令的钩子函数？"></a>自定义指令的钩子函数？</h3><ul>
+<li><code>bind</code>：指令绑定到指定元素时调用，只调用一次</li>
+<li><code>inserted</code>：指定元素插入父节点时调用</li>
+<li><code>update</code>：所在组件的 VNode 更新时调用</li>
+<li><code>componnetUpdated</code>：所在组件以及其子组件 VNode 全部更新后调用</li>
+<li><code>unbind</code>：只调用一次，指令与元素解绑时调用</li>
+</ul>
+<h3 id="说说nextTick的用处？"><a href="#说说nextTick的用处？" class="headerlink" title="说说nextTick的用处？"></a>说说nextTick的用处？</h3><p>修改数据时不能马上得到最新的DOM信息，所以需要使用nextTick，在nectTick回调中可以获取最新DOM信息</p>
+<h3 id="为什么nextTick优先是微任务？"><a href="#为什么nextTick优先是微任务？" class="headerlink" title="为什么nextTick优先是微任务？"></a>为什么nextTick优先是微任务？</h3><p>优先是<code>Promise.then</code>方法，是个微任务，这样可以避免多一次队列，进而少一次UI渲染，节省性能</p>
+<h3 id="Vue的SSR是什么？有什么好处？"><a href="#Vue的SSR是什么？有什么好处？" class="headerlink" title="Vue的SSR是什么？有什么好处？"></a>Vue的SSR是什么？有什么好处？</h3><p>SSR全称<code>Server Side Render</code></p>
+<ul>
+<li>有利于SEO：由于是在服务端，将数据填充进HTML之后再推送到浏览器，所以有利于SEO的爬取</li>
+<li>首屏渲染快 SSR的缺点：</li>
+<li>开发条件会受到限制，服务器端渲染只支持beforeCreate和created两个钩子；</li>
+<li>当需要一些外部扩展库时需要特殊处理，服务端渲染应用程序也需要处于Node.js的运行环境；</li>
+<li>更多的服务端负载。</li>
+</ul>
+<h3 id="Vue响应式是怎么实现的？"><a href="#Vue响应式是怎么实现的？" class="headerlink" title="Vue响应式是怎么实现的？"></a>Vue响应式是怎么实现的？</h3><ul>
+<li>1、劫持：通过<code>Object.defineProperty</code>对对象进行递归劫持属性的<code>get、set</code></li>
+<li>2、观察者模式：使用<code>watcher</code>进行观察数据使用的地方</li>
+<li>3、发布订阅模式：使用<code>dep</code>收集<code>watcher</code>，数据更改时，通过<code>notify</code>方法通知<code>dep</code>里的<code>watcher</code>去进行相应的更新</li>
+<li>4、数组：数组没有使用劫持的模式，而是通过重写数组原型上的方法，来实现数组的响应式</li>
+</ul>
+<h3 id="为什么只对对象劫持，而要对数组进行方法重写？"><a href="#为什么只对对象劫持，而要对数组进行方法重写？" class="headerlink" title="为什么只对对象劫持，而要对数组进行方法重写？"></a>为什么只对对象劫持，而要对数组进行方法重写？</h3><p>数组的元素大概率是成百上千的，所以对数组下标进行劫持的话会非常消耗性能。Vue通过对数组原型上方法的重写，实现数组的响应式</p>
+<h3 id="router-push、router-replace、router-go的区别？"><a href="#router-push、router-replace、router-go的区别？" class="headerlink" title="router.push、router.replace、router.go的区别？"></a>router.push、router.replace、router.go的区别？</h3><ul>
+<li><code>router.push</code>：跳转，并向history栈中加一个记录，可以后退到上一个页面</li>
+<li><code>router.replace</code>：跳转，不会向history栈中加一个记录，不可以后退到上一个页面</li>
+<li><code>router.go</code>：传正数向前跳转，传负数向后跳转</li>
+</ul>
+<h3 id="Vue中封装的数组方法有哪些，如何实现页面更新"><a href="#Vue中封装的数组方法有哪些，如何实现页面更新" class="headerlink" title="Vue中封装的数组方法有哪些，如何实现页面更新"></a>Vue中封装的数组方法有哪些，如何实现页面更新</h3><ul>
+<li>在Vue中，对响应式处理利用的是Object.defineProperty对数据进行拦截，而这个方法并不能监听到数组内部变化，数组长度变化，数组的截取变化等，所以需要对这些操作进行hack，让Vue能监听到其中的变化</li>
+<li>push()</li>
+<li>pop()</li>
+<li>shift()</li>
+<li>unshift()</li>
+<li>solice()</li>
+<li>sort()</li>
+<li>reverse()</li>
+</ul>
+<h3 id="请问子组件可以直接改变父组件的数据吗？怎么解决"><a href="#请问子组件可以直接改变父组件的数据吗？怎么解决" class="headerlink" title="请问子组件可以直接改变父组件的数据吗？怎么解决"></a>请问子组件可以直接改变父组件的数据吗？怎么解决</h3><ul>
+<li>肯定是不可以的,在vue里面为了维护父子组件的单向数据流,每次父级组件发生更新时，子组件中所有的 prop 都将会刷新为最新的值,如果你去修改,在控制台发出警告</li>
+<li>可以<strong>通过 \</strong><code>$emit</code>*<em> 派发一个自定义事件，父组件接收到后，由父组件去修改。*</em></li>
+</ul>
+<h3 id="vue如何监听对象或者数组某个属性的变化"><a href="#vue如何监听对象或者数组某个属性的变化" class="headerlink" title="vue如何监听对象或者数组某个属性的变化"></a>vue如何监听对象或者数组某个属性的变化</h3><ul>
+<li>this.$set(你要改变的数组/对象，你要改变的位置/key，你要改成什么value)</li>
+<li>调用以下几个数组的方法</li>
+</ul>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">splice</span>()、 <span class="built_in">push</span>()、<span class="built_in">pop</span>()、<span class="built_in">shift</span>()、<span class="built_in">unshift</span>()、<span class="built_in">sort</span>()、<span class="built_in">reverse</span>()</span><br><span class="line">复制代码</span><br></pre></td></tr></table></figure>
+<h3 id="Vue有那些性能优化"><a href="#Vue有那些性能优化" class="headerlink" title="Vue有那些性能优化"></a>Vue有那些性能优化</h3><p><strong>（1）编码阶段</strong></p>
+<ul>
+<li>尽量减少data中的数据，data中的数据都会增加getter和setter，会收集对应的watcher</li>
+<li>v-if和v-for不能连用</li>
+<li>如果需要使用v-for给每项元素绑定事件时使用事件代理</li>
+<li>SPA 页面采用keep-alive缓存组件</li>
+<li>在更多的情况下，使用v-if替代v-show</li>
+<li>key保证唯一</li>
+<li>使用路由懒加载、异步组件</li>
+<li>防抖、节流</li>
+<li>第三方模块按需导入</li>
+<li>长列表滚动到可视区域动态加载</li>
+<li>图片懒加载</li>
+</ul>
+<p><strong>（2）SEO优化</strong></p>
+<ul>
+<li>预渲染</li>
+<li>服务端渲染SSR</li>
+</ul>
+<p><strong>（3）打包优化</strong></p>
+<ul>
+<li>压缩代码</li>
+<li>Tree Shaking/Scope Hoisting</li>
+<li>使用cdn加载第三方模块</li>
+<li>多线程打包happypack</li>
+<li>splitChunks抽离公共文件</li>
+<li>sourceMap优化</li>
+</ul>
+<p><strong>（4）用户体验</strong></p>
+<ul>
+<li>骨架屏</li>
+<li>PWA</li>
+<li>还可以使用缓存(客户端缓存、服务端缓存)优化、服务端开启gzip压缩等。</li>
+</ul>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="http://example.com">柯基の小窝</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2023/02/10/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/">http://example.com/2023/02/10/前端面试题/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="http://example.com" target="_blank">柯基の小窝</a>！</span></div></div><div class="tag_share"><div class="post_share"><div class="social-share" data-image="https://pic1.imgdb.cn/item/6371a9b116f2c2beb1036e01.jpg" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><div class="post-reward"><div class="reward-button"><i class="fas fa-qrcode"></i> 打赏</div><div class="reward-main"><ul class="reward-all"><li class="reward-item"><a href="/images/wechat.jpg" target="_blank"><img class="post-qr-code-img" src="/images/wechat.jpg" alt="微信"/></a><div class="post-qr-code-desc">微信</div></li><li class="reward-item"><a href="/images/alipay.jpg" target="_blank"><img class="post-qr-code-img" src="/images/alipay.jpg" alt="支付宝"/></a><div class="post-qr-code-desc">支付宝</div></li></ul></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/2023/02/14/%E4%BD%BF%E7%94%A8%20CSP%20%E9%98%B2%E6%AD%A2%20XSS%20%E6%94%BB%E5%87%BB/"><img class="prev-cover" src="https://source.fomal.cc/img/default_cover_2.webp" onerror="onerror=null;src='/images/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">使用 CSP 防止 XSS 攻击</div></div></a></div><div class="next-post pull-right"><a href="/2023/01/18/%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8%E6%91%86%E5%9C%B0%E6%91%8A%E6%94%BB%E7%95%A5%EF%BC%8C%E5%80%9F%E4%BB%96%E4%BA%BA%E7%9A%84%E5%9C%B0%E6%91%8A%E7%BB%8F%E9%AA%8C%E5%86%99%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9C%B0%E6%91%8A%E4%BA%BA%E7%94%9F/"><img class="next-cover" src="https://w.wallhaven.cc/full/zy/wallhaven-zyxvqy.jpg" onerror="onerror=null;src='/images/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">史上最全摆地摊攻略，借他人的地摊经验写自己的地摊人生</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="fas fa-comments fa-fw"></i><span> 评论</span></div></div><div class="comment-wrap"><div><div class="vcomment" id="vcomment"></div></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="/images/avatar.jpg" onerror="this.onerror=null;this.src='/images/404.jpg'" alt="avatar"/></div><div class="author-info__name">柯基の小窝</div><div class="author-info__description">我是一枚前端 上班只为下班 加薪与我不关 爱吃小熊饼干</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">27</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">18</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">14</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly"><i class="fab fa-github"></i><span>Github</span></a><div class="card-info-social-icons is-center"><a class="social-icon" href="https://github.com/" target="_blank" title="Github"><i class="fab fa-github"></i></a><a class="social-icon" href="mailto:2500652354@qq.com" target="_blank" title="Email"><i class="fas fa-envelope"></i></a><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2500652354&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq"></i></a></div></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">博客还在开发中...</div><timing></timing></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#js%E7%9B%B8%E5%85%B3"><span class="toc-number">1.</span> <span class="toc-text">js相关</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#let%E5%92%8Cconst"><span class="toc-number">1.0.1.</span> <span class="toc-text">let和const</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A7%A3%E6%9E%84%E8%B5%8B%E5%80%BC"><span class="toc-number">1.0.2.</span> <span class="toc-text">解构赋值</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%A8%A1%E7%89%88%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.0.3.</span> <span class="toc-text">模版字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84-includes"><span class="toc-number">1.0.4.</span> <span class="toc-text">字符串的 includes</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E7%9A%84-startsWith-endsWith"><span class="toc-number">1.0.5.</span> <span class="toc-text">字符串的 startsWith  endsWith</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0-%E5%B0%96%E5%A4%B4%E5%87%BD%E6%95%B0"><span class="toc-number">1.0.6.</span> <span class="toc-text">函数-尖头函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%87%BD%E6%95%B0-%E5%BD%A2%E5%8F%82%E9%BB%98%E8%AE%A4%E5%80%BC-%E5%87%BD%E6%95%B0-%E5%BD%A2%E5%8F%82%E8%A7%A3%E6%9E%84-%E5%87%BD%E6%95%B0-%E5%BD%A2%E5%8F%82%E5%89%A9%E4%BD%99%E5%8F%82%E6%95%B0"><span class="toc-number">1.0.7.</span> <span class="toc-text">函数-形参默认值  函数-形参解构  函数-形参剩余参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%A9%E5%B1%95%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="toc-number">1.0.8.</span> <span class="toc-text">扩展运算符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E7%AE%80%E5%86%99"><span class="toc-number">1.0.9.</span> <span class="toc-text">对象简写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1%E6%96%B9%E6%B3%95%E7%AE%80%E5%86%99"><span class="toc-number">1.0.10.</span> <span class="toc-text">对象方法简写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E8%B1%A1key-%E4%BD%BF%E7%94%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.0.11.</span> <span class="toc-text">对象key-使用表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Object-assign"><span class="toc-number">1.0.12.</span> <span class="toc-text">Object.assign</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Object-create"><span class="toc-number">1.0.13.</span> <span class="toc-text">Object.create</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Promise"><span class="toc-number">1.0.14.</span> <span class="toc-text">Promise</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#ES6%E6%A8%A1%E5%9D%97%E5%8C%96-%E8%A7%84%E8%8C%83"><span class="toc-number">1.0.15.</span> <span class="toc-text">ES6模块化: 规范</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#null-%E5%92%8C-undefind%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.0.16.</span> <span class="toc-text">null 和 undefind的区别</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#vue%E7%9B%B8%E5%85%B3"><span class="toc-number">2.</span> <span class="toc-text">vue相关</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-Vue%E7%9A%84%E4%BC%98%E7%82%B9-vue%E7%9A%84%E7%BC%BA%E7%82%B9"><span class="toc-number">2.1.</span> <span class="toc-text">1.Vue的优点? vue的缺点?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AF%B4Vue%E6%98%AF%E4%B8%80%E4%B8%AA%E6%B8%90%E8%BF%9B%E5%BC%8F%E6%A1%86%E6%9E%B6"><span class="toc-number">2.2.</span> <span class="toc-text">2.为什么说Vue是一个渐进式框架?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-Vue%E8%B7%9FReact%E7%9A%84%E5%BC%82%E5%90%8C%E7%82%B9"><span class="toc-number">2.3.</span> <span class="toc-text">3. Vue跟React的异同点?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-MVVM%E6%98%AF%E4%BB%80%E4%B9%88-%E5%92%8CMVC%E6%9C%89%E4%BD%95%E5%8C%BA%E5%88%AB%E5%91%A2"><span class="toc-number">2.4.</span> <span class="toc-text">4.MVVM是什么?和MVC有何区别呢?</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Mvc"><span class="toc-number">2.4.1.</span> <span class="toc-text">Mvc</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MVVM"><span class="toc-number">2.4.2.</span> <span class="toc-text">MVVM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8C%BA%E5%88%AB"><span class="toc-number">2.4.3.</span> <span class="toc-text">区别</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-Vue%E5%92%8CJQuery%E7%9A%84%E5%8C%BA%E5%88%AB%E5%9C%A8%E5%93%AA-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%94%BE%E5%BC%83JQuery%E7%94%A8Vue"><span class="toc-number">2.5.</span> <span class="toc-text">5. Vue和JQuery的区别在哪?为什么放弃JQuery用Vue?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88data%E6%98%AF%E4%B8%80%E4%B8%AA%E5%87%BD%E6%95%B0-%E8%80%8C%E4%B8%8D%E6%98%AF%E5%AF%B9%E8%B1%A1"><span class="toc-number">2.6.</span> <span class="toc-text">. 为什么data是一个函数 而不是对象</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%EF%BC%8C%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%9F"><span class="toc-number">2.7.</span> <span class="toc-text">Vue的生命周期，有哪些？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%BF%87%E5%93%AA%E4%BA%9BVue%E7%9A%84%E4%BF%AE%E9%A5%B0%E7%AC%A6%E5%91%A2"><span class="toc-number">2.8.</span> <span class="toc-text">. 使用过哪些Vue的修饰符呢?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%BF%87%E5%93%AA%E4%BA%9BVue%E7%9A%84%E5%86%85%E9%83%A8%E6%8C%87%E4%BB%A4%E5%91%A2%EF%BC%9F"><span class="toc-number">2.9.</span> <span class="toc-text">.使用过哪些Vue的内部指令呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#v-if%E5%92%8Cv-show%E6%9C%89%E4%BD%95%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">2.10.</span> <span class="toc-text">v-if和v-show有何区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88v-if%E5%92%8Cv-for%E4%B8%8D%E5%BB%BA%E8%AE%AE%E7%94%A8%E5%9C%A8%E5%90%8C%E4%B8%80%E6%A0%87%E7%AD%BE%EF%BC%9F"><span class="toc-number">2.11.</span> <span class="toc-text">为什么v-if和v-for不建议用在同一标签？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%84%E4%BB%B6%E4%B9%8B%E9%97%B4%E7%9A%84%E4%BC%A0%E5%80%BC%E6%96%B9%E5%BC%8F%E6%9C%89%E5%93%AA%E4%BA%9B"><span class="toc-number">2.12.</span> <span class="toc-text">.组件之间的传值方式有哪些?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E6%9C%89%E5%93%AA%E4%BA%9B%E6%A8%A1%E5%BC%8F%E5%91%A2-%E5%8F%88%E6%9C%89%E4%BB%80%E4%B9%88%E4%B8%8D%E5%90%8C%E5%91%A2"><span class="toc-number">2.13.</span> <span class="toc-text">路由有哪些模式呢?又有什么不同呢?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1%E7%9A%84%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="toc-number">2.14.</span> <span class="toc-text">路由的钩子函数？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E8%AE%BE%E7%BD%AE%E5%8A%A8%E6%80%81class%EF%BC%8C%E5%8A%A8%E6%80%81style%EF%BC%9F"><span class="toc-number">2.15.</span> <span class="toc-text">如何设置动态class，动态style？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vuex%E7%9A%84%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B1%9E%E6%80%A7%EF%BC%9F%E7%94%A8%E5%A4%84%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">2.16.</span> <span class="toc-text">vuex的有哪些属性？用处是什么？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#watch%E6%9C%89%E5%93%AA%E4%BA%9B%E5%B1%9E%E6%80%A7%EF%BC%8C%E5%88%86%E5%88%AB%E6%9C%89%E4%BB%80%E4%B9%88%E7%94%A8%EF%BC%9F"><span class="toc-number">2.17.</span> <span class="toc-text">watch有哪些属性，分别有什么用？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E8%88%AC%E5%9C%A8%E5%93%AA%E4%B8%AA%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E8%AF%B7%E6%B1%82%E5%BC%82%E6%AD%A5%E6%95%B0%E6%8D%AE"><span class="toc-number">2.18.</span> <span class="toc-text">一般在哪个生命周期请求异步数据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%88%B6%E5%AD%90%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E9%A1%BA%E5%BA%8F%EF%BC%9F"><span class="toc-number">2.19.</span> <span class="toc-text">父子组件生命周期顺序？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%BB%BA%E8%AE%AE%E7%94%A8index%E5%81%9Akey%EF%BC%8C%E4%B8%BA%E4%BB%80%E4%B9%88%E4%B8%8D%E5%BB%BA%E8%AE%AE%E7%94%A8%E9%9A%8F%E6%9C%BA%E6%95%B0%E5%81%9Akey%EF%BC%9F"><span class="toc-number">2.20.</span> <span class="toc-text">为什么不建议用index做key，为什么不建议用随机数做key？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E8%BF%87%E9%82%A3%E4%BA%9B%E6%8F%92%E6%A7%BD%E7%9A%84%E4%BD%BF%E7%94%A8-%E5%8E%9F%E7%90%86%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">2.21.</span> <span class="toc-text">使用过那些插槽的使用,原理是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%AF%E5%90%A6%E4%BD%BF%E7%94%A8%E8%BF%87%E6%BB%A4%E5%99%A8%EF%BC%8C%E8%BF%87%E6%BB%A4%E5%99%A8%E7%9A%84%E4%BD%9C%E7%94%A8-%E6%80%8E%E4%B9%88%E4%BD%BF%E7%94%A8"><span class="toc-number">2.22.</span> <span class="toc-text">是否使用过滤器，过滤器的作用,怎么使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E6%8C%87%E4%BB%A4%E7%9A%84%E9%92%A9%E5%AD%90%E5%87%BD%E6%95%B0%EF%BC%9F"><span class="toc-number">2.23.</span> <span class="toc-text">自定义指令的钩子函数？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B4%E8%AF%B4nextTick%E7%9A%84%E7%94%A8%E5%A4%84%EF%BC%9F"><span class="toc-number">2.24.</span> <span class="toc-text">说说nextTick的用处？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88nextTick%E4%BC%98%E5%85%88%E6%98%AF%E5%BE%AE%E4%BB%BB%E5%8A%A1%EF%BC%9F"><span class="toc-number">2.25.</span> <span class="toc-text">为什么nextTick优先是微任务？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E7%9A%84SSR%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F%E6%9C%89%E4%BB%80%E4%B9%88%E5%A5%BD%E5%A4%84%EF%BC%9F"><span class="toc-number">2.26.</span> <span class="toc-text">Vue的SSR是什么？有什么好处？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E5%93%8D%E5%BA%94%E5%BC%8F%E6%98%AF%E6%80%8E%E4%B9%88%E5%AE%9E%E7%8E%B0%E7%9A%84%EF%BC%9F"><span class="toc-number">2.27.</span> <span class="toc-text">Vue响应式是怎么实现的？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AA%E5%AF%B9%E5%AF%B9%E8%B1%A1%E5%8A%AB%E6%8C%81%EF%BC%8C%E8%80%8C%E8%A6%81%E5%AF%B9%E6%95%B0%E7%BB%84%E8%BF%9B%E8%A1%8C%E6%96%B9%E6%B3%95%E9%87%8D%E5%86%99%EF%BC%9F"><span class="toc-number">2.28.</span> <span class="toc-text">为什么只对对象劫持，而要对数组进行方法重写？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#router-push%E3%80%81router-replace%E3%80%81router-go%E7%9A%84%E5%8C%BA%E5%88%AB%EF%BC%9F"><span class="toc-number">2.29.</span> <span class="toc-text">router.push、router.replace、router.go的区别？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E4%B8%AD%E5%B0%81%E8%A3%85%E7%9A%84%E6%95%B0%E7%BB%84%E6%96%B9%E6%B3%95%E6%9C%89%E5%93%AA%E4%BA%9B%EF%BC%8C%E5%A6%82%E4%BD%95%E5%AE%9E%E7%8E%B0%E9%A1%B5%E9%9D%A2%E6%9B%B4%E6%96%B0"><span class="toc-number">2.30.</span> <span class="toc-text">Vue中封装的数组方法有哪些，如何实现页面更新</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AF%B7%E9%97%AE%E5%AD%90%E7%BB%84%E4%BB%B6%E5%8F%AF%E4%BB%A5%E7%9B%B4%E6%8E%A5%E6%94%B9%E5%8F%98%E7%88%B6%E7%BB%84%E4%BB%B6%E7%9A%84%E6%95%B0%E6%8D%AE%E5%90%97%EF%BC%9F%E6%80%8E%E4%B9%88%E8%A7%A3%E5%86%B3"><span class="toc-number">2.31.</span> <span class="toc-text">请问子组件可以直接改变父组件的数据吗？怎么解决</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#vue%E5%A6%82%E4%BD%95%E7%9B%91%E5%90%AC%E5%AF%B9%E8%B1%A1%E6%88%96%E8%80%85%E6%95%B0%E7%BB%84%E6%9F%90%E4%B8%AA%E5%B1%9E%E6%80%A7%E7%9A%84%E5%8F%98%E5%8C%96"><span class="toc-number">2.32.</span> <span class="toc-text">vue如何监听对象或者数组某个属性的变化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Vue%E6%9C%89%E9%82%A3%E4%BA%9B%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96"><span class="toc-number">2.33.</span> <span class="toc-text">Vue有那些性能优化</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/2023/02/14/%E4%BD%BF%E7%94%A8%20CSP%20%E9%98%B2%E6%AD%A2%20XSS%20%E6%94%BB%E5%87%BB/" title="使用 CSP 防止 XSS 攻击"><img src="https://source.fomal.cc/img/default_cover_2.webp" onerror="this.onerror=null;this.src='/images/404.jpg'" alt="使用 CSP 防止 XSS 攻击"/></a><div class="content"><a class="title" href="/2023/02/14/%E4%BD%BF%E7%94%A8%20CSP%20%E9%98%B2%E6%AD%A2%20XSS%20%E6%94%BB%E5%87%BB/" title="使用 CSP 防止 XSS 攻击">使用 CSP 防止 XSS 攻击</a><time datetime="2023-02-14T05:47:16.000Z" title="发表于 2023-02-14 13:47:16">2023-02-14</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/02/10/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="前端面试题"><img src="https://pic1.imgdb.cn/item/6371a9b116f2c2beb1036e01.jpg" onerror="this.onerror=null;this.src='/images/404.jpg'" alt="前端面试题"/></a><div class="content"><a class="title" href="/2023/02/10/%E5%89%8D%E7%AB%AF%E9%9D%A2%E8%AF%95%E9%A2%98/" title="前端面试题">前端面试题</a><time datetime="2023-02-10T06:13:18.000Z" title="发表于 2023-02-10 14:13:18">2023-02-10</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/18/%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8%E6%91%86%E5%9C%B0%E6%91%8A%E6%94%BB%E7%95%A5%EF%BC%8C%E5%80%9F%E4%BB%96%E4%BA%BA%E7%9A%84%E5%9C%B0%E6%91%8A%E7%BB%8F%E9%AA%8C%E5%86%99%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9C%B0%E6%91%8A%E4%BA%BA%E7%94%9F/" title="史上最全摆地摊攻略，借他人的地摊经验写自己的地摊人生"><img src="https://w.wallhaven.cc/full/zy/wallhaven-zyxvqy.jpg" onerror="this.onerror=null;this.src='/images/404.jpg'" alt="史上最全摆地摊攻略，借他人的地摊经验写自己的地摊人生"/></a><div class="content"><a class="title" href="/2023/01/18/%E5%8F%B2%E4%B8%8A%E6%9C%80%E5%85%A8%E6%91%86%E5%9C%B0%E6%91%8A%E6%94%BB%E7%95%A5%EF%BC%8C%E5%80%9F%E4%BB%96%E4%BA%BA%E7%9A%84%E5%9C%B0%E6%91%8A%E7%BB%8F%E9%AA%8C%E5%86%99%E8%87%AA%E5%B7%B1%E7%9A%84%E5%9C%B0%E6%91%8A%E4%BA%BA%E7%94%9F/" title="史上最全摆地摊攻略，借他人的地摊经验写自己的地摊人生">史上最全摆地摊攻略，借他人的地摊经验写自己的地摊人生</a><time datetime="2023-01-18T06:25:53.000Z" title="发表于 2023-01-18 14:25:53">2023-01-18</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/16/hexo%E5%AE%9E%E7%8E%B0%E8%83%8C%E6%99%AF%E8%8A%B1%E7%93%A3%E9%A3%9E%E8%88%9E%E6%95%88%E6%9E%9C/" title="hexo实现背景花瓣飞舞效果"><img src="https://w.wallhaven.cc/full/kx/wallhaven-kx36mq.png" onerror="this.onerror=null;this.src='/images/404.jpg'" alt="hexo实现背景花瓣飞舞效果"/></a><div class="content"><a class="title" href="/2023/01/16/hexo%E5%AE%9E%E7%8E%B0%E8%83%8C%E6%99%AF%E8%8A%B1%E7%93%A3%E9%A3%9E%E8%88%9E%E6%95%88%E6%9E%9C/" title="hexo实现背景花瓣飞舞效果">hexo实现背景花瓣飞舞效果</a><time datetime="2023-01-16T08:29:33.000Z" title="发表于 2023-01-16 16:29:33">2023-01-16</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/2023/01/11/CSS%E5%AE%9E%E7%8E%B0%E8%BE%B9%E6%A1%86%E5%BA%95%E9%83%A8%E6%B8%90%E5%8F%98%E8%89%B2%E7%9A%844%E7%A7%8D%E6%96%B9%E6%B3%95/" title="CSS实现边框底部渐变色的4种方法"><img src="https://pic.imgdb.cn/item/63bfcd90be43e0d30ede7985.jpg" onerror="this.onerror=null;this.src='/images/404.jpg'" alt="CSS实现边框底部渐变色的4种方法"/></a><div class="content"><a class="title" href="/2023/01/11/CSS%E5%AE%9E%E7%8E%B0%E8%BE%B9%E6%A1%86%E5%BA%95%E9%83%A8%E6%B8%90%E5%8F%98%E8%89%B2%E7%9A%844%E7%A7%8D%E6%96%B9%E6%B3%95/" title="CSS实现边框底部渐变色的4种方法">CSS实现边框底部渐变色的4种方法</a><time datetime="2023-01-11T02:46:56.000Z" title="发表于 2023-01-11 10:46:56">2023-01-11</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2023 By 柯基の小窝</div><div class="framework-info"><span>Copyright </span><a target="_blank" rel="noopener" href="https://hexo.io">Lucky</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div><div class="footer_custom_text">小站已运行 102 天</div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="fas fa-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="fas fa-arrow-up"></i></button></div></div><div id="local-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><span id="loading-status"></span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="is-center" id="loading-database"><i class="fas fa-spinner fa-pulse"></i><span>  数据库加载中</span></div><div class="search-wrap"><div id="local-search-input"><div class="local-search-box"><input class="local-search-box--input" placeholder="搜索文章" type="text"/></div></div><hr/><div id="local-search-results"></div></div></div><div id="search-mask"></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui/dist/fancybox.umd.min.js"></script><script src="/js/search/local-search.js"></script><div class="js-pjax"><script>function loadValine () {
+  function initValine () {
+    const valine = new Valine(Object.assign({
+      el: '#vcomment',
+      appId: 'SaW79h7vcqESDQE0QxeFaodX-gzGzoHsz',
+      appKey: 'VqwCZDXjKDLB3v2pDh7MoFJK',
+      avatar: 'monsterid',
+      serverURLs: '',
+      emojiMaps: "",
+      master: 'b29165a346815d5038623c7bf71a20d9',   //博主邮箱md5加密32位小写
+      tagMeta: ["博主","小伙伴","访客"],     //标识字段名
+      friends:  [],  //小伙伴邮箱Md5
+      path: window.location.pathname,
+      visitor: false
+    }, "/js/Valine.min.js"))
+  }
+
+  if (typeof Valine === 'function') initValine() 
+  else getScript('https://cdn.jsdelivr.net/npm/valine/dist/Valine.min.js').then(initValine)
+}
+
+if ('Valine' === 'Valine' || !true) {
+  if (true) btf.loadComment(document.getElementById('vcomment'),loadValine)
+  else setTimeout(loadValine, 0)
+} else {
+  function loadOtherComment () {
+    loadValine()
+  }
+}</script></div><script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script async src="//at.alicdn.com/t/c/font_3785958_78091558z5o.js"></script><script src="/js/timing.js"></script><div class="aplayer no-destroy" data-id="7427714271" data-server="netease" data-type="playlist" data-fixed="true" data-mini="true" data-listFolded="false" data-order="random" data-lrctype="1" data-preload="none" data-autoplay="true" muted></div><script src="/js/petal.js"></script><script id="click-heart" src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/dist/click-heart.min.js" async="async" mobile="false"></script><script src="https://cdn.jsdelivr.net/npm/pjax/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof chatBtnFn === 'function' && chatBtnFn()
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --><script data-pjax>
+  function butterfly_clock_anzhiyu_injector_config(){
+    var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+    var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img class="entered loading" id="card-clock-loading" src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading"/></div></div></div></div></div>';
+    console.log('已挂载butterfly_clock_anzhiyu')
+    if(parent_div_git) {
+      parent_div_git.insertAdjacentHTML("afterbegin",item_html)
+    }
+  }
+  var elist = 'null'.split(',');
+  var cpage = location.pathname;
+  var epage = 'all';
+  var qweather_key = 'f81b2ae5bd24411e9245211d6aec542c';
+  var gaud_map_key = 'a00c13d454a341399079281f11ab713f';
+  var baidu_ak_key = 'undefined';
+  var flag = 0;
+  var clock_rectangle = '112.982279,28.19409';
+  var clock_default_rectangle_enable = 'false';
+
+  for (var i=0;i<elist.length;i++){
+    if (cpage.includes(elist[i])){
+      flag++;
+    }
+  }
+
+  if ((epage ==='all')&&(flag == 0)){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  else if (epage === cpage){
+    butterfly_clock_anzhiyu_injector_config();
+  }
+  </script><script src="https://widget.qweather.net/simple/static/js/he-simple-common.js?v=2.0"></script><script data-pjax src="https://cdn.cbd.int/hexo-butterfly-clock-anzhiyu/lib/clock.min.js"></script><script async src="//at.alicdn.com/t/font_2032782_8d5kxvn09md.js"></script><!-- hexo injector body_end end --><script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"model":{"jsonPath":"/live2dw/assets/wanko.model.json"},"display":{"position":"left","width":200,"height":300},"mobile":{"show":true},"log":false,"pluginJsPath":"lib/","pluginModelPath":"assets/","pluginRootPath":"live2dw/","tagMode":false});</script></body></html>
