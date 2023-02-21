@@ -2211,10 +2211,6 @@ figure.highlight pre .javascript .function {
     width: calc(100% - 15px) !important;
   }
 }
-#article-container .flink .flink-list > .flink-list-item:hover .flink-item-icon {
-  margin-left: -10px;
-  width: 0;
-}
 #article-container .flink .flink-list > .flink-list-item:before {
   position: absolute;
   top: 0;
