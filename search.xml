@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>使用git在本地创建分支推送到远程</title>
+      <link href="/2023/02/23/%E5%9C%A8%E6%9C%AC%E5%9C%B0%E5%88%9B%E5%BB%BA%E5%88%86%E6%94%AF%E6%8E%A8%E9%80%81%E5%88%B0%E8%BF%9C%E7%A8%8B/"/>
+      <url>/2023/02/23/%E5%9C%A8%E6%9C%AC%E5%9C%B0%E5%88%9B%E5%BB%BA%E5%88%86%E6%94%AF%E6%8E%A8%E9%80%81%E5%88%B0%E8%BF%9C%E7%A8%8B/</url>
+      
+        <content type="html"><![CDATA[<h2 id="命令行操作"><a href="#命令行操作" class="headerlink" title="命令行操作"></a>命令行操作</h2><div class='checkbox blue'><input type="radio" />            <p>首先确定当前主分支是master</p>            </div><p>检查当前本地和远程分支：git branch -a 或者vscode左下角名称是master，git pull 拉取最新代码<br><div class='checkbox blue'><input type="radio" />            <p>在master分支下创建dev本地分支</p>            </div><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch 新分支名称</span><br></pre></td></tr></table></figure><br><div class='checkbox blue'><input type="radio" />            <p>把当前本地分支切换成新建的dev本地分支</p>            </div><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 新分支名称</span><br></pre></td></tr></table></figure><br><div class='checkbox blue'><input type="radio" />            <p>将本地dev分支推送到远程</p>            </div><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git push --set-upstream origin 新分支名称</span><br></pre></td></tr></table></figure></p><div class='checkbox blue'><input type="radio" />            <p>检测</p>            </div><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure><h2 id="vscode-可视化操作"><a href="#vscode-可视化操作" class="headerlink" title="vscode 可视化操作"></a>vscode 可视化操作</h2><div class='checkbox blue'><input type="radio" />            <p>创建本地分支，先切换到目标分支，再 git pull 拉取最新代码，然后执行下图操作，输入新建分支名称，点击回车，成功后当前分支会自动切换到新分支上</p>            </div><p><img src="https://upload-images.jianshu.io/upload_images/26381799-926f60e4990a0941.png?imageMogr2/auto-orient/strip|imageView2/2/w/1200/format/webp" alt=""></p><div class='checkbox blue'><input type="radio" />            <p>发布分支，点击发布分支，成功后会将本地分支推送到远程</p>            </div><p><img src="https://upload-images.jianshu.io/upload_images/26381799-1b2bed14de55731a.png?imageMogr2/auto-orient/strip|imageView2/2/w/792/format/webp" alt=""></p><h2 id="在远程创建分支拉取到本地"><a href="#在远程创建分支拉取到本地" class="headerlink" title="在远程创建分支拉取到本地"></a>在远程创建分支拉取到本地</h2><div class='checkbox blue'><input type="radio" />            <p>在远程的master分支下新建dev分支</p>            </div><p>在gitee或者github上登录后自行操作<br><div class='checkbox blue'><input type="radio" />            <p>本地拉取新建的远程dev分支</p>            </div><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure><br><div class='checkbox blue'><input type="radio" />            <p>查看（此时会发现远程dev分支，但是本地没有）</p>            </div><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -a </span><br></pre></td></tr></table></figure><br><div class='checkbox blue'><input type="radio" />            <p>将当前分支切换成新分支</p>            </div><br><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git checkout 新分支名称</span><br></pre></td></tr></table></figure></p><div class='checkbox blue'><input type="radio" />            <p>查看（此时会自动生成 dev 本地分支）</p>            </div><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git branch -a</span><br></pre></td></tr></table></figure><div class="note info simple"><p>注意：项目开发中我们一般会创建dev开发分支，然后其余项目人员在dev分支上再创建自己的开发分支，操作和这个是一样的，只是把当前主分支切换成dev</p></div>]]></content>
+      
+      
+      <categories>
+          
+          <category> git </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> git </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>Hello World</title>
       <link href="/2023/02/20/hello-world/"/>
       <url>/2023/02/20/hello-world/</url>
